@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import cl.duoc.invoice.model.Invoice;
 
 
-public interface InvoceRepository extends JpaRepository<Invoice, Long>{
+public interface InvoiceRepository extends JpaRepository<Invoice, Long>{
 
 }
