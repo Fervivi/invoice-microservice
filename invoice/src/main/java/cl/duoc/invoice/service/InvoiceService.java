@@ -1,9 +1,11 @@
 package cl.duoc.invoice.service;
 
 
-import java.time.LocalDate;
+
+
 
 import org.springframework.stereotype.Service;
+
 
 import cl.duoc.invoice.dto.response.InvoiceResponseDto;
 import cl.duoc.invoice.model.Invoice;
@@ -16,7 +18,7 @@ public class InvoiceService {
 
     private final InvoiceRepository invoiceRepository;
 
-    private InvoiceResponseDto mapToInvoiceResponseDto(Invoice invoice){
+    public InvoiceResponseDto mapToInvoiceResponseDto(Invoice invoice){
 
         InvoiceResponseDto invoiceResponseDto = new InvoiceResponseDto();
 
@@ -35,9 +37,9 @@ public class InvoiceService {
 
 
 
-
-
     }
+
+    
 
 
 
