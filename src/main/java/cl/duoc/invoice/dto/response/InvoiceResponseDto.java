@@ -17,7 +17,7 @@ public class InvoiceResponseDto {
     //datos receptor (cliente)
     private String razonSocialReceptor;
     private String giroReceptor;
-    private String direcionReceptor;
+    private String direccionReceptor;
     private String rutReceptor;
     // datos emisor(proveedor)
     private String razonSocialEmisor;

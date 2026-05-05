@@ -12,13 +12,12 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class InvoiceRequestDto {
 
-    private Long id;
     private LocalDate fecha;
     private String folio;
     //datos receptor (cliente)
     private String razonSocialReceptor;
     private String giroReceptor;
-    private String direcionReceptor;
+    private String direccionReceptor;
     private String rutReceptor;
     // datos emisor(proveedor)
     private String razonSocialEmisor;

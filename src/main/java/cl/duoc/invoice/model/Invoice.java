@@ -14,7 +14,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "Invoice")
+@Table(name = "invoices")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -38,7 +38,7 @@ public class Invoice {
     private String giroReceptor;
 
     @Column(nullable = false)
-    private String direcionReceptor;
+    private String direccionReceptor;
 
     @Column(nullable = false)
     private String rutReceptor;

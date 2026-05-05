@@ -15,7 +15,7 @@ public class ReceiptResponseDto {
     private LocalDate fecha;
     private String folio;
     //datos receptor (cliente)
-    private String razonSocialReceptor;
+    private String direccionReceptor;
     private String giroReceptor;
     private String direcionReceptor;
     private String rutReceptor;

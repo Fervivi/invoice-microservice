@@ -1,12 +1,8 @@
 package cl.duoc.invoice.service;
 
-
-
-
-
 import org.springframework.stereotype.Service;
 
-
+import cl.duoc.invoice.dto.request.InvoiceRequestDto;
 import cl.duoc.invoice.dto.response.InvoiceResponseDto;
 import cl.duoc.invoice.model.Invoice;
 import cl.duoc.invoice.repository.InvoiceRepository;
@@ -18,22 +14,37 @@ public class InvoiceService {
 
     private final InvoiceRepository invoiceRepository;
 
-    public InvoiceResponseDto mapToInvoiceResponseDto(Invoice invoice){
+    public InvoiceResponseDto createInvoice(InvoiceRequestDto request){
 
-        InvoiceResponseDto invoiceResponseDto = new InvoiceResponseDto();
+         Invoice invoice = new Invoice();
 
-        invoiceResponseDto.setFecha(invoice.getFecha());
-        invoiceResponseDto.setFolio(invoice.getFolio());
-        invoiceResponseDto.setRazonSocialReceptor(invoice.getRazonSocialReceptor());
-        invoiceResponseDto.setGiroReceptor(invoice.getGiroReceptor());
-        invoiceResponseDto.setDirecionReceptor(invoice.getDirecionReceptor());
-        invoiceResponseDto.setRutReceptor(invoice.getRutReceptor());
-        invoiceResponseDto.setRazonSocialEmisor(invoice.getRazonSocialEmisor());
-        invoiceResponseDto.setGiroEmisor(invoice.getGiroReceptor());
-        invoiceResponseDto.setDireccionEmisor(invoice.getDireccionEmisor());
-        invoiceResponseDto.setRutEmisor(invoice.getRutEmisor());
+        invoice.setFecha(request.getFecha());
+        invoice.setFolio(request.getFolio());
+        invoice.setRazonSocialReceptor(request.getRazonSocialReceptor());
+        invoice.setGiroReceptor(request.getGiroReceptor());
+        invoice.setDirecionReceptor(request.getDirecionReceptor());
+        invoice.setRutReceptor(request.getRutReceptor());
+        invoice.setRazonSocialEmisor(request.getRazonSocialEmisor());
+        invoice.setGiroEmisor(request.getGiroEmisor());
+        invoice.setDireccionEmisor(request.getDireccionEmisor());
+        invoice.setRutEmisor(request.getRutEmisor());
 
-        return invoiceResponseDto;
+        Invoice savedInvoice = invoiceRepository.save(invoice);
+
+        InvoiceResponseDto response = new InvoiceResponseDto();
+
+        response.setFecha(savedInvoice.getFecha());
+        response.setFolio(savedInvoice.getFolio());
+        response.setRazonSocialReceptor(savedInvoice.getRazonSocialReceptor());
+        response.setGiroReceptor(savedInvoice.getGiroReceptor());
+        response.setDirecionReceptor(savedInvoice.getDirecionReceptor());
+        response.setRutReceptor(savedInvoice.getRutReceptor());
+        response.setRazonSocialEmisor(savedInvoice.getRazonSocialEmisor());
+        response.setGiroEmisor(savedInvoice.getGiroEmisor());
+        response.setDireccionEmisor(savedInvoice.getDireccionEmisor());
+        response.setRutEmisor(savedInvoice.getRutEmisor());
+
+        return response;
 
 
 
