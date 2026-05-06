@@ -1,7 +1,10 @@
+/*
+ * Copyright © 2026 DuocUC FullStack 1
+ * Eduardo Bray
+ * Rodrigo Callealta
+ * Fernando Villalobos
+ */
 package cl.duoc.invoice.model;
-
-import java.time.LocalDate;
-
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,6 +12,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import java.time.LocalDate;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,7 +34,7 @@ public class Invoice {
     @Column(nullable = false)
     private String folio;
 
-    //datos receptor (cliente)
+    // datos receptor (cliente)
     @Column(nullable = false)
     private String razonSocialReceptor;
 
@@ -52,14 +56,7 @@ public class Invoice {
 
     @Column(nullable = false)
     private String direccionEmisor;
-    
+
     @Column(nullable = false)
     private String rutEmisor;
-
-
-
-
-
-
-
 }

@@ -1,11 +1,15 @@
+/*
+ * Copyright © 2026 DuocUC FullStack 1
+ * Eduardo Bray
+ * Rodrigo Callealta
+ * Fernando Villalobos
+ */
 package cl.duoc.invoice.dto.request;
 
 import java.time.LocalDate;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 
 @Data
 @AllArgsConstructor
@@ -14,7 +18,7 @@ public class InvoiceRequestDto {
 
     private LocalDate fecha;
     private String folio;
-    //datos receptor (cliente)
+    // datos receptor (cliente)
     private String razonSocialReceptor;
     private String giroReceptor;
     private String direccionReceptor;
@@ -24,5 +28,4 @@ public class InvoiceRequestDto {
     private String giroEmisor;
     private String direccionEmisor;
     private String rutEmisor;
-
 }

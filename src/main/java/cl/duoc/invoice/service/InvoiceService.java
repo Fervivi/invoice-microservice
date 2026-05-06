@@ -1,12 +1,17 @@
+/*
+ * Copyright © 2026 DuocUC FullStack 1
+ * Eduardo Bray
+ * Rodrigo Callealta
+ * Fernando Villalobos
+ */
 package cl.duoc.invoice.service;
-
-import org.springframework.stereotype.Service;
 
 import cl.duoc.invoice.dto.request.InvoiceRequestDto;
 import cl.duoc.invoice.dto.response.InvoiceResponseDto;
 import cl.duoc.invoice.model.Invoice;
 import cl.duoc.invoice.repository.InvoiceRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
@@ -14,15 +19,15 @@ public class InvoiceService {
 
     private final InvoiceRepository invoiceRepository;
 
-    public InvoiceResponseDto createInvoice(InvoiceRequestDto request){
+    public InvoiceResponseDto createInvoice(InvoiceRequestDto request) {
 
-         Invoice invoice = new Invoice();
+        Invoice invoice = new Invoice();
 
         invoice.setFecha(request.getFecha());
         invoice.setFolio(request.getFolio());
         invoice.setRazonSocialReceptor(request.getRazonSocialReceptor());
         invoice.setGiroReceptor(request.getGiroReceptor());
-        invoice.setDirecionReceptor(request.getDirecionReceptor());
+        invoice.setDireccionReceptor(request.getDireccionReceptor());
         invoice.setRutReceptor(request.getRutReceptor());
         invoice.setRazonSocialEmisor(request.getRazonSocialEmisor());
         invoice.setGiroEmisor(request.getGiroEmisor());
@@ -37,7 +42,7 @@ public class InvoiceService {
         response.setFolio(savedInvoice.getFolio());
         response.setRazonSocialReceptor(savedInvoice.getRazonSocialReceptor());
         response.setGiroReceptor(savedInvoice.getGiroReceptor());
-        response.setDirecionReceptor(savedInvoice.getDirecionReceptor());
+        response.setDireccionReceptor(savedInvoice.getDireccionReceptor());
         response.setRutReceptor(savedInvoice.getRutReceptor());
         response.setRazonSocialEmisor(savedInvoice.getRazonSocialEmisor());
         response.setGiroEmisor(savedInvoice.getGiroEmisor());
@@ -45,15 +50,5 @@ public class InvoiceService {
         response.setRutEmisor(savedInvoice.getRutEmisor());
 
         return response;
-
-
-
     }
-
-    
-
-
-
-
-
 }
