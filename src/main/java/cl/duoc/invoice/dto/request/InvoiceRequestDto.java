@@ -17,7 +17,6 @@ import lombok.NoArgsConstructor;
 public class InvoiceRequestDto {
 
     private LocalDate fecha;
-    private String folio;
     // datos receptor (cliente)
     private String razonSocialReceptor;
     private String giroReceptor;

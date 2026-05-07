@@ -31,8 +31,8 @@ public class Invoice {
     @Column(nullable = false)
     private LocalDate fecha;
 
-    @Column(nullable = false)
-    private String folio;
+    @Column(nullable = false, unique = true)
+    private Long folio;
 
     // datos receptor (cliente)
     @Column(nullable = false)

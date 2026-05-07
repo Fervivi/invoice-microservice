@@ -17,8 +17,8 @@ import lombok.NoArgsConstructor;
 public class ReceiptResponseDto {
 
     private Long id;
+    private Long folio;
     private LocalDate fecha;
-    private String folio;
     // datos receptor (cliente)
     private String direccionReceptor;
     private String giroReceptor;
