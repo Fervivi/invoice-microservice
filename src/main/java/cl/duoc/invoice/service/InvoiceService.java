@@ -21,10 +21,16 @@ public class InvoiceService {
 
     public InvoiceResponseDto createInvoice(InvoiceRequestDto request) {
 
+        Long nextFolio = invoiceRepository
+                .findTopByOrderByFolioDesc()
+                .map(lastInvoice -> lastInvoice.getFolio() + 1)
+                .orElse(1L);
+
         Invoice invoice = new Invoice();
 
+        invoice.setFolio(nextFolio);
+
         invoice.setFecha(request.getFecha());
-        invoice.setFolio(request.getFolio());
         invoice.setRazonSocialReceptor(request.getRazonSocialReceptor());
         invoice.setGiroReceptor(request.getGiroReceptor());
         invoice.setDireccionReceptor(request.getDireccionReceptor());
