@@ -10,6 +10,8 @@ import cl.duoc.invoice.dto.request.InvoiceRequestDto;
 import cl.duoc.invoice.dto.response.InvoiceResponseDto;
 import cl.duoc.invoice.model.Invoice;
 import cl.duoc.invoice.repository.InvoiceRepository;
+import java.util.List;
+import java.util.stream.Collectors;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -23,7 +25,7 @@ public class InvoiceService {
 
         Long nextFolio = invoiceRepository
                 .findTopByOrderByFolioDesc()
-                .map(lastInvoice -> lastInvoice.getFolio() + 1)
+                .map(invoice -> invoice.getFolio() + 1)
                 .orElse(1L);
 
         Invoice invoice = new Invoice();
@@ -50,11 +52,34 @@ public class InvoiceService {
         response.setGiroReceptor(savedInvoice.getGiroReceptor());
         response.setDireccionReceptor(savedInvoice.getDireccionReceptor());
         response.setRutReceptor(savedInvoice.getRutReceptor());
+        // emisor
         response.setRazonSocialEmisor(savedInvoice.getRazonSocialEmisor());
         response.setGiroEmisor(savedInvoice.getGiroEmisor());
         response.setDireccionEmisor(savedInvoice.getDireccionEmisor());
         response.setRutEmisor(savedInvoice.getRutEmisor());
 
         return response;
+    }
+
+    public List<InvoiceResponseDto> getAllInvoices() {
+        List<Invoice> invoices = invoiceRepository.findAll();
+        return invoices.stream()
+                .map(invoice -> {
+                    InvoiceResponseDto response = new InvoiceResponseDto();
+                    response.setId(invoice.getId());
+                    response.setFolio(invoice.getFolio());
+                    response.setFecha(invoice.getFecha());
+                    response.setRazonSocialReceptor(invoice.getRazonSocialReceptor());
+                    response.setGiroReceptor(invoice.getGiroReceptor());
+                    response.setDireccionReceptor(invoice.getDireccionReceptor());
+                    response.setRutReceptor(invoice.getRutReceptor());
+                    // emisor
+                    response.setRazonSocialEmisor(invoice.getRazonSocialEmisor());
+                    response.setGiroEmisor(invoice.getGiroEmisor());
+                    response.setDireccionEmisor(invoice.getDireccionEmisor());
+                    response.setRutEmisor(invoice.getRutEmisor());
+                    return response;
+                })
+                .collect(Collectors.toList());
     }
 }
