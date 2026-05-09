@@ -8,7 +8,7 @@ package cl.duoc.invoice.service;
 
 import cl.duoc.invoice.dto.request.InvoiceRequestDto;
 import cl.duoc.invoice.dto.response.InvoiceResponseDto;
-import cl.duoc.invoice.model.Invoice;
+import cl.duoc.invoice.model.InvoiceModel;
 import cl.duoc.invoice.repository.InvoiceRepository;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,7 +28,7 @@ public class InvoiceService {
                 .map(invoice -> invoice.getFolio() + 1)
                 .orElse(1L);
 
-        Invoice invoice = new Invoice();
+        InvoiceModel invoice = new InvoiceModel();
 
         invoice.setFolio(nextFolio);
 
@@ -42,7 +42,7 @@ public class InvoiceService {
         invoice.setDireccionEmisor(request.getDireccionEmisor());
         invoice.setRutEmisor(request.getRutEmisor());
 
-        Invoice savedInvoice = invoiceRepository.save(invoice);
+        InvoiceModel savedInvoice = invoiceRepository.save(invoice);
 
         InvoiceResponseDto response = new InvoiceResponseDto();
 
@@ -62,7 +62,7 @@ public class InvoiceService {
     }
 
     public List<InvoiceResponseDto> getAllInvoices() {
-        List<Invoice> invoices = invoiceRepository.findAll();
+        List<InvoiceModel> invoices = invoiceRepository.findAll();
         return invoices.stream()
                 .map(invoice -> {
                     InvoiceResponseDto response = new InvoiceResponseDto();

@@ -6,13 +6,19 @@
  */
 package cl.duoc.invoice.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,7 +28,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Invoice {
+public class InvoiceModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -59,4 +65,17 @@ public class Invoice {
 
     @Column(nullable = false)
     private String rutEmisor;
+
+    @Column(nullable = false)
+    private BigDecimal montoNeto;
+
+    @Column(nullable = false)
+    private BigDecimal iva;
+
+    @Column(nullable = false)
+    private BigDecimal montoTotal;
+
+    @OneToMany(mappedBy = "invoiceModel", cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonManagedReference
+    private List<InvoiceItemModel> items = new ArrayList<>();
 }
