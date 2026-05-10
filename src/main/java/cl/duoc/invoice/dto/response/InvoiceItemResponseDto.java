@@ -4,6 +4,9 @@
  * Rodrigo Callealta
  * Fernando Villalobos
  */
-package cl.duoc.invoice.dto.request;
+package cl.duoc.invoice.dto.response;
 
-public class InvoiceItemDto {}
+import lombok.Data;
+
+@Data
+public class InvoiceItemResponseDto {}
