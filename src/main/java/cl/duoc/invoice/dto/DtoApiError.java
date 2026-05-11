@@ -1,7 +1,12 @@
+/*
+ * Copyright © 2026 DuocUC FullStack 1
+ * Eduardo Bray
+ * Rodrigo Callealta
+ * Fernando Villalobos
+ */
 package cl.duoc.invoice.dto;
 
 import java.time.LocalDate;
-
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,5 +23,4 @@ public class DtoApiError {
     private String message;
     private String path;
     private String claseException;
-
 }
