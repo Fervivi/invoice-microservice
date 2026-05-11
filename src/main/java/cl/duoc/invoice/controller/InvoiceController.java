@@ -13,6 +13,7 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +35,12 @@ public class InvoiceController {
     @PostMapping
     public ResponseEntity<InvoiceResponseDto> createInvoice(@RequestBody InvoiceRequestDto request) {
         InvoiceResponseDto response = invoiceService.createInvoice(request);
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/{folio}")
+    public ResponseEntity<InvoiceResponseDto> getInvoiceByFolio(@PathVariable Long folio) {
+        InvoiceResponseDto response = invoiceService.getInvoiceByFolio(folio);
         return ResponseEntity.ok(response);
     }
 }

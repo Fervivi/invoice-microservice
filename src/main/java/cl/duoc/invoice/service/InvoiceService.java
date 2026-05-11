@@ -165,4 +165,47 @@ public class InvoiceService {
                 })
                 .collect(Collectors.toList());
     }
+
+    public InvoiceResponseDto getInvoiceByFolio(Long folio) {
+        InvoiceModel invoice =
+                invoiceRepository.findByFolio(folio).orElseThrow(() -> new RuntimeException("Factura no encontrada"));
+
+        InvoiceResponseDto response = new InvoiceResponseDto();
+
+        response.setId(invoice.getId());
+        response.setFolio(invoice.getFolio());
+        response.setFecha(invoice.getFecha());
+
+        response.setRazonSocialReceptor(invoice.getRazonSocialReceptor());
+        response.setGiroReceptor(invoice.getGiroReceptor());
+        response.setDireccionReceptor(invoice.getDireccionReceptor());
+        response.setRutReceptor(invoice.getRutReceptor());
+
+        response.setRazonSocialEmisor(invoice.getRazonSocialEmisor());
+        response.setGiroEmisor(invoice.getGiroEmisor());
+        response.setDireccionEmisor(invoice.getDireccionEmisor());
+        response.setRutEmisor(invoice.getRutEmisor());
+
+        response.setMontoNeto(invoice.getMontoNeto());
+        response.setIva(invoice.getIva());
+        response.setMontoTotal(invoice.getMontoTotal());
+
+        List<InvoiceItemResponseDto> items = invoice.getItems().stream()
+                .map(item -> {
+                    InvoiceItemResponseDto itemResponse = new InvoiceItemResponseDto();
+
+                    itemResponse.setId(item.getId());
+                    itemResponse.setCantidad(item.getCantidad());
+                    itemResponse.setNombreProducto(item.getNombreProducto());
+                    itemResponse.setPrecioUnitario(item.getPrecioUnitario());
+                    itemResponse.setSubtotal(item.getSubtotal());
+
+                    return itemResponse;
+                })
+                .collect(Collectors.toList());
+
+        response.setItems(items);
+
+        return response;
+    }
 }

@@ -13,4 +13,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface InvoiceRepository extends JpaRepository<InvoiceModel, Long> {
 
     Optional<InvoiceModel> findTopByOrderByFolioDesc();
+
+    Optional<InvoiceModel> findByFolio(Long folio);
 }
