@@ -7,6 +7,7 @@
 package cl.duoc.invoice.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -30,11 +31,16 @@ public class InvoiceItemModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Col
+    @Column(nullable = false)
     private Integer cantidad;
 
+    @Column(nullable = false)
     private String nombreProducto;
+
+    @Column(nullable = false)
     private BigDecimal precioUnitario;
+
+    @Column(nullable = false)
     private BigDecimal subtotal;
 
     @ManyToOne

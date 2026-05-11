@@ -6,7 +6,6 @@
  */
 package cl.duoc.invoice.dto.request;
 
-import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -29,11 +28,6 @@ public class InvoiceRequestDto {
     private String giroEmisor;
     private String direccionEmisor;
     private String rutEmisor;
-
-    // valores factura
-    private BigDecimal montoNeto;
-    private BigDecimal iva;
-    private BigDecimal montoTotal;
 
     private List<InvoiceItemRequestDto> items;
 }
