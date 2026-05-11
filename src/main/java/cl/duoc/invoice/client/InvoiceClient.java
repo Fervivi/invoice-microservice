@@ -26,8 +26,7 @@ public class InvoiceClient {
                 .retrieve()
                 .onStatus(
                         status -> status.value() == 404,
-                        response -> response ->
-                                Mono.error(new ResourceNotFoundException("Invoice not found with id: " + id)))
+                        response -> Mono.error(new ResourceNotFoundException("Invoice not found with id: ")))
                 .bodyToMono(InvoiceResponseDto.class)
                 .block();
     }
