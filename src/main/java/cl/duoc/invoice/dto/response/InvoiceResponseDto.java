@@ -6,6 +6,7 @@
  */
 package cl.duoc.invoice.dto.response;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 import lombok.AllArgsConstructor;
@@ -30,6 +31,10 @@ public class InvoiceResponseDto {
     private String giroEmisor;
     private String direccionEmisor;
     private String rutEmisor;
+
+    private BigDecimal montoNeto;
+    private BigDecimal iva;
+    private BigDecimal montoTotal;
 
     private List<InvoiceItemResponseDto> items;
 }
