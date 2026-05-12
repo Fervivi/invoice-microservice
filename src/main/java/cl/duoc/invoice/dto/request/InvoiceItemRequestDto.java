@@ -6,6 +6,9 @@
  */
 package cl.duoc.invoice.dto.request;
 
+import jakarta.validation.constraints.DecimalMin;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,7 +19,13 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class InvoiceItemRequestDto {
 
+    @NotNull(message = "La cantidad es obligatoria")
     private Integer cantidad;
+
+    @NotBlank(message = "El nombre del producto es obligatorio")
     private String nombreProducto;
+
+    @NotNull(message = "El precio unitario es obligatorio")
+    @DecimalMin(value = "0.01", message = "El precio unitario debe ser mayor a 0")
     private BigDecimal precioUnitario;
 }
