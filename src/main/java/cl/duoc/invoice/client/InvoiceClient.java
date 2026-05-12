@@ -17,16 +17,16 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class InvoiceClient {
 
-    private final WebClient webClient;
+    private final WebClient webClientInvoice;
 
-    public InvoiceResponseDto getInvoiceId(Integer id) {
-        return webClient
+    public InvoiceResponseDto getInvoiceId(long folio) {
+        return webClientInvoice
                 .get()
-                .uri("/api/v1/invoices/{id}", id)
+                .uri("/api/v1/invoices/{folio}", folio)
                 .retrieve()
                 .onStatus(
                         status -> status.value() == 404,
-                        response -> Mono.error(new ResourceNotFoundException("Invoice not found with id: ")))
+                        response -> Mono.error(new ResourceNotFoundException("Invoice not found with folio: " + folio)))
                 .bodyToMono(InvoiceResponseDto.class)
                 .block();
     }

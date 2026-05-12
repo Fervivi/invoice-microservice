@@ -15,7 +15,7 @@ public class WebClientConfigInvoice {
     @Bean
     public WebClient webClientInvoice() {
         return WebClient.builder()
-                .baseUrl("http://localhost:8080/api/v1/invoices")
+                .baseUrl("http://localhost:8080")
                 .defaultHeader("Content-Type", "application/json")
                 .build();
     }
