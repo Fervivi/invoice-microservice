@@ -19,7 +19,7 @@ public class InvoiceClient {
 
     private final WebClient webClientInvoice;
 
-    public InvoiceResponseDto getInvoiceId(long folio) {
+    public InvoiceResponseDto getInvoiceByFolio(Long folio) {
         return webClientInvoice
                 .get()
                 .uri("/api/v1/invoices/{folio}", folio)
