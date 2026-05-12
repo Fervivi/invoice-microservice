@@ -20,7 +20,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class InvoiceRequestDto {
-    @NotNull(message = "la fecha debe ser obligatoria")
+    @NotNull(message = "la fecha es obligatoria")
     private LocalDate fecha;
     // datos receptor (cliente)
     @NotBlank(message = "La razón social del receptor es obligatoria")

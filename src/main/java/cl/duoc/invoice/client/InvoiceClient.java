@@ -26,7 +26,8 @@ public class InvoiceClient {
                 .retrieve()
                 .onStatus(
                         status -> status.value() == 404,
-                        response -> Mono.error(new ResourceNotFoundException("Invoice not found with folio: " + folio)))
+                        response ->
+                                Mono.error(new ResourceNotFoundException("factura no encontrada con folio: " + folio)))
                 .bodyToMono(InvoiceResponseDto.class)
                 .block();
     }

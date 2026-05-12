@@ -9,8 +9,10 @@ package cl.duoc.invoice.controller;
 import cl.duoc.invoice.dto.request.InvoiceRequestDto;
 import cl.duoc.invoice.dto.response.InvoiceResponseDto;
 import cl.duoc.invoice.service.InvoiceService;
+import jakarta.validation.Valid;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,9 +35,9 @@ public class InvoiceController {
     }
 
     @PostMapping
-    public ResponseEntity<InvoiceResponseDto> createInvoice(@RequestBody InvoiceRequestDto request) {
+    public ResponseEntity<InvoiceResponseDto> createInvoice(@Valid @RequestBody InvoiceRequestDto request) {
         InvoiceResponseDto response = invoiceService.createInvoice(request);
-        return ResponseEntity.ok(response);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @GetMapping("/{folio}")
