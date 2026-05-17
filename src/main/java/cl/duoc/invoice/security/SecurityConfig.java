@@ -6,13 +6,13 @@
  */
 package cl.duoc.invoice.security;
 
-import lombok.Value;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
-
-@Value
+@Configuration
+@RequiredArgsConstructor
 public class SecurityConfig {
-
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
     @Bean
@@ -27,11 +27,11 @@ public class SecurityConfig {
                 // Desactiva protección CSRF
                 .csrf(csrf -> csrf.disable())
 
-                // Configura aplicación State
+                // Configura aplicación Stateless
+                .sessionManagement(session ->
 
-                
                 // No crear sesiones HTTP
-                        session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 
                 // Configura reglas de autorización
                 .authorizeHttpRequests(auth -> auth

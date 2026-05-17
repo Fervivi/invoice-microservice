@@ -11,8 +11,12 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+
+import com.auth0.jwt.algorithms.Algorithm;
 
 @Component
 public class JwtAuthenticationFilter {
@@ -57,10 +61,10 @@ public class JwtAuthenticationFilter {
             // Extrae el token quitando "Bearer "
             String token = header.substring(7);
 
-            // Valida el JWT utilizando la clave secreta
-            DecodedJWT jwt = JWT.require(
+            // Valida el JWT utilizando l
 
-                            // Usa algoritmo HMAC256 y la clave secreta
+                    
+                    // Usa algoritmo HMAC256 y la clave secreta
                             Algorithm.HMAC256(secret))
 
                     // Verifica que el emisor sea login-service
