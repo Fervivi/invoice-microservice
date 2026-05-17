@@ -34,8 +34,8 @@ public class SecurityConfig {
                 // Configura aplicación Stateless
                 .sessionManagement(session ->
 
-                // No crear sesiones HTTP
-                session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                        // No crear sesiones HTTP
+                        session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 
                 // Configura reglas de autorización
                 .authorizeHttpRequests(auth -> auth
